@@ -11,4 +11,6 @@ DATABASES = {
 
 DEBUG = False
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Belgrade'
+
+AUTH_USER_MODEL = 'punchInClock.User'
