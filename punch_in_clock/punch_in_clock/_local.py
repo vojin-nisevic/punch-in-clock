@@ -8,3 +8,9 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+DEBUG = False
+
+TIME_ZONE = 'Belgrade'
+
+AUTH_USER_MODEL = 'punchInClock.User'
