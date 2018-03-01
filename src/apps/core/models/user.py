@@ -5,7 +5,10 @@ Custom User Model
 
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
+from django_countries.fields import CountryField
 from django.utils.translation import ugettext_lazy as _
+from core import choices
+from timezone_field import TimeZoneField
 
 
 class UserManager(BaseUserManager):
@@ -42,11 +45,41 @@ class UserManager(BaseUserManager):
         return self._create_user(email, password, **extra_fields)
 
 
+def user_directory_path(instance, filename):
+    # File will be uploaded to MEDIA_ROOT/user_profiles/<id>/<filename>
+    return 'user_profiles/{0}/{1}'.format(instance.id, filename)
+
+
 class User(AbstractUser):
     """User model."""
 
     username = None
     email = models.EmailField(_('email address'), unique=True)
+
+    is_manager = models.BooleanField(
+        _('manager status'),
+        default=False,
+        help_text=_('Designates whether the user is manager or not.'),
+    )
+
+    # department = models.ForeignKey('self', on_delete=models.CASCADE)
+    # office = models.ForeignKey('self', on_delete=models.CASCADE)
+    position = models.CharField(_('position'), max_length=30, blank=True)
+    birth_date = models.DateField(_('birth date'))
+    gender = models.CharField(_('home phone'), max_length=1, choices=choices.MALE_OR_FEMALE)
+    profile_image = models.ImageField(upload_to=user_directory_path)
+    address = models.CharField(_('address'), max_length=50)
+    zip = models.CharField(_('zip'), max_length=20)
+    city = models.CharField(_('city'), max_length=30)
+    state_province = models.CharField(_('state province'), max_length=50, blank=True)
+    country = CountryField()
+    home_phone = models.CharField(_('home phone'), max_length=20, blank=True)
+    desk_phone = models.CharField(_('desk phone'), max_length=20, blank=True)
+    cell_phone = models.CharField(_('cell phone'), max_length=20)
+    facebook = models.URLField(_('facebook'), max_length=200, blank=True)
+    linkedin = models.URLField(_('linkedin'), max_length=200, blank=True)
+    twitter = models.URLField(_('twitter'), max_length=200, blank=True)
+    timezone = TimeZoneField()
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
