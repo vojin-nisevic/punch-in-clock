@@ -50,6 +50,26 @@ def user_directory_path(instance, filename):
     return 'user_profiles/{0}/{1}'.format(instance.id, filename)
 
 
+class Department(models.Model):
+    depart = models.ForeignKey('self', on_delete=models.CASCADE)
+    name = models.CharField(_('department'), max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
+class Office(models.Model):
+    ofckey = models.ForeignKey('self', on_delete=models.CASCADE)
+    # title = models.CharField(max_length=100)
+    # sub_title = models.CharField(max_length=100)
+    name = models.CharField(_('office name'), max_length=100)
+    phone = models.CharField(max_length=100, blank=True)
+    email = models.EmailField(max_length=100, blank=True)
+
+    def __str__(self):
+        return self.name
+
+
 class User(AbstractUser):
     """User model."""
 
