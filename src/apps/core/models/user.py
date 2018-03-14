@@ -50,6 +50,25 @@ def user_directory_path(instance, filename):
     return 'user_profiles/{0}/{1}'.format(instance.id, filename)
 
 
+class Department(models.Model):
+    name = models.CharField(_('department'), max_length=100)
+    phone = models.CharField(max_length=100, blank=True)
+    email = models.EmailField(max_length=100, blank=True)
+    manager = models.CharField(_('manager'), max_length=100, blank=True)
+    building = models.CharField(_('building'), max_length=100, blank=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Office(models.Model):
+    name = models.CharField(_('office name'), max_length=100)
+    building = models.CharField(_('building'), max_length=100, blank=True)
+
+    def __str__(self):
+        return self.name
+
+
 class User(AbstractUser):
     """User model."""
 
@@ -62,8 +81,8 @@ class User(AbstractUser):
         help_text=_('Designates whether the user is manager or not.'),
     )
 
-    # department = models.ForeignKey('self', on_delete=models.CASCADE)
-    # office = models.ForeignKey('self', on_delete=models.CASCADE)
+    department = models.ForeignKey('self', on_delete=models.CASCADE, related_name='department_set')
+    office = models.ForeignKey('self', on_delete=models.CASCADE, related_name='office_set')
     position = models.CharField(_('position'), max_length=30, blank=True)
     birth_date = models.DateField(_('birth date'))
     gender = models.CharField(_('home phone'), max_length=1, choices=choices.MALE_OR_FEMALE)
