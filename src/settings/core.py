@@ -44,6 +44,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+LOGIN_REDIRECT_URL = '/home'
+LOGIN_URL = '/login'
+
 ROOT_URLCONF = 'src.urls'
 
 AUTH_USER_MODEL = 'core.User'
@@ -51,7 +54,7 @@ AUTH_USER_MODEL = 'core.User'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates', ],
+        'DIRS': ['src/templates', ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
