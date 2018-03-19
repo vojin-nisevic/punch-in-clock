@@ -11,16 +11,8 @@
     <link rel="icon" href="../../../../favicon.ico">
 
     <title>Signin Template for Bootstrap</title>
-
-    <!-- Bootstrap core CSS -->
-    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"-->
-          <!--integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"-->
-          <!--crossorigin="anonymous">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <!-- Trying to fetch another bootstrap file -->
-    <!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/scss/utilities/_visibility.scss">-->
 
     <!-- Custom styles for this template -->
     <link href="{% static  'css/signin.css' %}" rel="stylesheet">
@@ -28,37 +20,19 @@
 
   <body class="text-center">
     {% block content %}
-        {% if form.errors %}
-          <p>Your username and password didn't match. Please try again.</p>
-          <ol>
-            {% for error in form.errors %}
-                <li><strong>{{ error|escape }}</strong></li>
-            {% endfor %}
-          </ol>
-        {% endif %}
         <form class="form-signin" method="post" action="?next={% url 'home' %}" >
-        <!--<form class="form-signin" method="post" action="{% url 'home' %}" >-->
           {% csrf_token %}
           <img class="mb-4" src="{% static 'images/punchin.jpg' %}" alt="Punch in" width="72" height="72">
           <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-          <!--<label for="inputEmail" class="sr-only">Email address</label>-->
-          <!--<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>-->
-          <!--<label for="inputPassword" class="sr-only">Password</label>-->
-          <!--<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>-->
-          <!--<div class="checkbox mb-3">-->
-            <!--<label>-->
-              <!--<input type="checkbox" value="remember-me"> Remember me-->
-            <!--</label>-->
-          <!--</div>-->
           <label class="sr-only" for="id_username">Email address:</label>
-          <input  class="form-control" name="email" required="" placeholder="Email address" maxlength="254" id="id_username" autofocus="" type="text">
+          <input  class="form-control" name="username" required="" placeholder="Email address" maxlength="254" id="id_username" autofocus="" type="text">
           <label class="sr-only" for="id_password">Password:</label>
           <input class="form-control" name="password" required="" placeholder="Password" id="id_password" type="password">
-          <!--{{ form.as_p }}-->
           <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
           <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
         </form>
 
+        <!-- Necessary for Boottrap -->
         <script src="//code.jquery.com/jquery-3.2.1.slim.min.js"
                 integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
