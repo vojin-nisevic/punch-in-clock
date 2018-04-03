@@ -26,11 +26,10 @@ urlpatterns = [
     path('login/', login, name='login'),
     path('logout/', logout, name='logout'),
     path('core/', TemplateView.as_view(template_name='core/home.html'), name='home'),
-    path('myprofile/', Profile.as_view(template_name='core/myprofile.html'), name='myprofile'),
+    path('profile/', Profile.as_view(template_name='core/profile.html'), name='profile'),
     path('base/', TemplateView.as_view(template_name='core/base.html'), name='base'),
 ]
 
-# Serving static files for development
 if settings.DEBUG:
 
     urlpatterns += staticfiles_urlpatterns()

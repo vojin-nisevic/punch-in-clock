@@ -1,9 +1,9 @@
-from django.views.generic import ListView
+from django.views.generic import UpdateView
 from core.models.models import MyProfile
 from core.models.user import User
 
 
-class Profile(ListView):
+class Profile(UpdateView):
     model = User
 
     def get_context_data(self, **kwargs):
