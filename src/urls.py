@@ -19,12 +19,15 @@ from django.conf import settings
 from django.urls import path
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.generic import TemplateView
+from .apps.core.views.views import Profile
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', login, name='login'),
     path('logout/', logout, name='logout'),
     path('core/', TemplateView.as_view(template_name='core/home.html'), name='home'),
+    path('myprofile/', Profile.as_view(template_name='core/myprofile.html'), name='myprofile'),
+    path('base/', TemplateView.as_view(template_name='core/base.html'), name='base'),
 ]
 
 # Serving static files for development
