@@ -23,6 +23,8 @@ sys.path.insert(0, str(APPS_DIR))
 # Application definition
 
 INSTALLED_APPS = [
+    'timezone_field',
+    'django_countries',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
