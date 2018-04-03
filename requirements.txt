@@ -1,6 +1,6 @@
 django
 psycopg2-binary
 ipdb
-django_countries
-timezone_field
+django-timezone-field
+django-countries
 Pillow
