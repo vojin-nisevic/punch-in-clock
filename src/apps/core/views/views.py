@@ -1,8 +1,13 @@
 from django.views.generic import UpdateView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from core.models.user import User
+from django.utils.module_loading import import_module
+from django.http import HttpRequest, HttpResponseRedirect
+from django.conf import settings
+from django.contrib.auth import logout
+
 
 
 @method_decorator(login_required, name='dispatch')
@@ -30,3 +35,22 @@ class Profile(UpdateView):
 
         return self.request.user
 
+
+def logout(self):
+    """
+    Removes the authenticated user's cookies and session object.
+
+    Causes the authenticated user to be logged out.
+    """
+    from django.contrib.auth import get_user, logout
+    request = HttpRequest()
+    engine = import_module(settings.SESSION_ENGINE)
+    if self.session:
+        request.session = self.session
+        request.user = get_user(request)
+    else:
+        request.session = engine.SessionStore()
+    logout(request)
+    url = reverse('login',)
+    return HttpResponseRedirect(url)
+    # return reverse_lazy('login')

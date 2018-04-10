@@ -41,14 +41,14 @@
         <a class="py-2 d-none d-md-inline-block" href="#">Link</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Link</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Link</a>
-        <a class="py-2 d-none d-md-inline-block" href="#">Link</a>
+        <a class="py-2 d-none d-md-inline-block" href="{% url 'logout' %}">Logout</a>
       </div>
     </nav>
 
     {% block content %}}
 
     {% endblock %}
-    
+
     <footer class="container" style="position:relative;">
       <div class="row">
         <div class="col-12 col-md">
