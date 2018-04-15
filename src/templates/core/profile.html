@@ -18,16 +18,23 @@
 <body class="bg-light">
 {% block content %}
 <div class="container">
-    <div class="py-5 text-center"></div>
+    <div class="col-md-8 py-5 text-center"></div>
+        <div class="row">
+            <div class="col-md-8">
+                <form enctype="multipart/form-data" action="" method="post">
+                    {% csrf_token %}
+                    
+                        {{ form.as_p }}
+                        <input type="submit" value="Update profile">
 
-            <form action="" method="post">
-                {% csrf_token %}
-
-                {{ form.as_p }}
-            <input type="submit" value="Update profile">
-        </form>
-
+                </form>
+            </div>
+            <div class="col-md-4">
+                <img src="{{ user.profile_image.url }}" width="230">
+            </div>
+        </div>
     </div>
+
 </div>
 
 {% endblock %}
