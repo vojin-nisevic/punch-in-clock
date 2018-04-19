@@ -41,7 +41,9 @@
         <a class="py-2 d-none d-md-inline-block" href="#">Link</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Link</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Link</a>
-        <a class="py-2 d-none d-md-inline-block" href="#">Link</a>
+        # {% if user.is_manager
+        <a class="py-2 d-none d-md-inline-block" href="{% url 'invite' %}">Invite</a>
+        # %}
       </div>
     </nav>
 
