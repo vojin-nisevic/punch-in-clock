@@ -19,7 +19,8 @@ from django.conf import settings
 from django.urls import path
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns, static
 from django.views.generic import TemplateView
-from core.views.views import Profile, Invite
+from core.views.invite import Invite
+from core.views.profile import Profile
 
 
 urlpatterns = [

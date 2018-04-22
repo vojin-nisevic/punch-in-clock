@@ -1,4 +1,3 @@
-from django import forms
 from django.forms import ModelForm, DateField
 from core.models.user import User
 from django.conf import settings
@@ -14,9 +13,4 @@ class UserForm(ModelForm):
                   'desk_phone', 'cell_phone', 'facebook', 'linkedin',
                   'twitter', 'profile_image')
 
-
-class InviteForm(forms.Form):
-    recipient = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'Email recipient'}))
-    subject = forms.CharField(max_length=100)
-    message = forms.CharField(widget=forms.Textarea)
 
