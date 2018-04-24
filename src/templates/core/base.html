@@ -36,7 +36,7 @@
         <a class="py-2 d-none d-md-inline-block" href="#">Link</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Link</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Link</a>
-        <a class="py-2 d-none d-md-inline-block" href="#">Link</a>
+        <a class="py-2 d-none d-md-inline-block" href="{% url 'logout' %}">Logout</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Link</a>
         {% if user.is_manager %}
             <a class="py-2 d-none d-md-inline-block" href="{% url 'invite' %}">Invite employee</a>
@@ -47,7 +47,7 @@
     {% block content %}}
 
     {% endblock %}
-    
+
     <footer class="container" style="position:relative;">
       <div class="row">
         <div class="col-12 col-md">
