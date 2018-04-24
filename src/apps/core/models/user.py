@@ -84,9 +84,9 @@ class User(AbstractUser):
     department = models.ForeignKey('self', on_delete=models.CASCADE, related_name='department_set')
     office = models.ForeignKey('self', on_delete=models.CASCADE, related_name='office_set')
     position = models.CharField(_('position'), max_length=30, blank=True)
-    birth_date = models.DateField(_('birth date'))
-    gender = models.CharField(_('home phone'), max_length=1, choices=choices.MALE_OR_FEMALE)
-    profile_image = models.ImageField(upload_to=user_directory_path)
+    birth_date = models.DateField(_('birth date'), blank=True)
+    gender = models.CharField(_('gender'), max_length=1, choices=choices.MALE_OR_FEMALE)
+    profile_image = models.ImageField(upload_to='profile_images/')  # user_directory_path
     address = models.CharField(_('address'), max_length=50)
     zip = models.CharField(_('zip'), max_length=20)
     city = models.CharField(_('city'), max_length=30)

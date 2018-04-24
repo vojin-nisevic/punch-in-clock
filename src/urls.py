@@ -17,9 +17,10 @@ from django.contrib import admin
 from django.contrib.auth.views import login, logout
 from django.conf import settings
 from django.urls import path
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns, static
 from django.views.generic import TemplateView
-from core.views.views import Profile
+from core.views.invite import Invite
+from core.views.profile import Profile
 
 
 urlpatterns = [
@@ -29,8 +30,10 @@ urlpatterns = [
     path('core/', TemplateView.as_view(template_name='core/home.html'), name='home'),
     path('profile/<intLpk>/', Profile.as_view(template_name='core/profile.html'), name='profile'),
     path('base/', TemplateView.as_view(template_name='core/base.html'), name='base'),
+    path('invite/', Invite.as_view(template_name='core/invite.html'), name='invite'),
 ]
 
 if settings.DEBUG:
 
     urlpatterns += staticfiles_urlpatterns()
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
