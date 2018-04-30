@@ -21,6 +21,9 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns, static
 from django.views.generic import TemplateView
 from core.views.invite import Invite
 from core.views.profile import Profile
+from core.views.department import Departments
+from core.views.department_create import DepartmentCreate
+from core.views.department_UD import DepartmentUpdate
 
 
 urlpatterns = [
@@ -31,6 +34,11 @@ urlpatterns = [
     path('profile/<intLpk>/', Profile.as_view(template_name='core/profile.html'), name='profile'),
     path('base/', TemplateView.as_view(template_name='core/base.html'), name='base'),
     path('invite/', Invite.as_view(template_name='core/invite.html'), name='invite'),
+    path('department/', Departments.as_view(template_name='core/department.html'), name='department'),
+    path('department/add/', DepartmentCreate.as_view(template_name='core/department_create.html'),
+         name='department-add'),
+    path('department/<int:pk>', DepartmentUpdate.as_view(template_name='core/department_UD.html'),
+         name='department-UD'),
 ]
 
 if settings.DEBUG:
