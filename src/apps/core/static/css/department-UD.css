@@ -1,0 +1,9 @@
+a.btn-primary {
+    padding-right: 30px;
+    margin-right: 50px;
+    border-color: #ff0000;
+}
+
+.control-label {
+    color: #ff0000;
+}

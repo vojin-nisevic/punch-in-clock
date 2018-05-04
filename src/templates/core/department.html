@@ -7,9 +7,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Departments</title>
-    <link type="text/css" href="{% static 'css/department.css' %}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
+    <link type="text/css" href="{% static 'core/department.css' %}" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
@@ -27,7 +29,11 @@
                     {% if department_list %}
                     <ul>
                     {% for department in department_list %}
-                        <li><a href="{% url 'department-UD' department.id %}">{{ department.name }}</a> </li>
+                        <li>
+                            <h5>{{ department.name }}</h5>
+                            <a href="{% url 'department-UD' department.id %}">Update</a>
+                            <a href="{% url 'department-delete' department.id %}">Delete</a>
+                        </li>
                     {% endfor %}
                     </ul>
                     {% else %}

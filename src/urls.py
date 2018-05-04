@@ -24,6 +24,7 @@ from core.views.profile import Profile
 from core.views.department import Departments
 from core.views.department_create import DepartmentCreate
 from core.views.department_UD import DepartmentUpdate
+from core.views.deapartment_delete import DepartmentDelete
 
 
 urlpatterns = [
@@ -37,8 +38,10 @@ urlpatterns = [
     path('department/', Departments.as_view(template_name='core/department.html'), name='department'),
     path('department/add/', DepartmentCreate.as_view(template_name='core/department_create.html'),
          name='department-add'),
-    path('department/<int:pk>', DepartmentUpdate.as_view(template_name='core/department_UD.html'),
+    path('department/update/<int:pk>', DepartmentUpdate.as_view(template_name='core/department_UD.html'),
          name='department-UD'),
+    path('department/delete/<int:pk>/', DepartmentDelete.as_view(template_name='core/department_delete.html'),
+         name='department-delete'),
 ]
 
 if settings.DEBUG:
