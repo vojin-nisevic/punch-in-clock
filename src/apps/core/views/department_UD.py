@@ -1,5 +1,5 @@
 from django.views.generic.edit import UpdateView
-from django.urls import reverse
+from django.urls import reverse_lazy
 from core.models.user import Department
 from core.forms.department import DepartmentForm
 
@@ -10,4 +10,5 @@ class DepartmentUpdate(UpdateView):
     form_class = DepartmentForm
 
     def get_success_url(self):
-        return reverse('department')
+        return reverse_lazy('department')
+

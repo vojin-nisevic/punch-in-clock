@@ -6,15 +6,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Department management</title>
-
-    <!-- Custom styles for this template -->
-    <link href="css/department-UD.css" rel="stylesheet" type="text/css">
+    <title>Delete department</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
+
 </head>
 <body>
     {% block content %}
@@ -25,11 +23,12 @@
 
                     <form action="" method="post">
                         {% csrf_token %}
-                        {% include 'core/form-template.html' %}
+                        <h5>{{ department.name }}</h5>
+                        <h5>{{ department.manager }}</h5>
+                        <h5>{{ department.building }}</h5>
 
-                        <input type="submit" class="btn btn-primary" value="Update department"
+                        <input type="submit" class="btn btn-primary" value="Delete department"
                                onclick="return confirm('Are you sure?')">
-
                     </form>
             </div>
         </div>
