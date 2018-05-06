@@ -24,7 +24,11 @@ from core.views.profile import Profile
 from core.views.department import Departments
 from core.views.department_create import DepartmentCreate
 from core.views.department_UD import DepartmentUpdate
-from core.views.deapartment_delete import DepartmentDelete
+from core.views.department_delete import DepartmentDelete
+from core.views.office import Offices
+from core.views.office_create import OfficeCreate
+from core.views.office_update import OfficeUpdate
+from core.views.office_delete import OfficeDelete
 
 
 urlpatterns = [
@@ -42,9 +46,16 @@ urlpatterns = [
          name='department-UD'),
     path('department/delete/<int:pk>/', DepartmentDelete.as_view(template_name='core/department_delete.html'),
          name='department-delete'),
+    path('office/', Offices.as_view(template_name='core/office.html'), name='office'),
+    path('office/add/', OfficeCreate.as_view(template_name='core/office_create.html'), name='office-add'),
+    path('office/update/<int:pk>/', OfficeUpdate.as_view(template_name='core/office_update.html'),
+         name='office-update'),
+    path('office/delete/<int:pk>/', OfficeDelete.as_view(template_name='core/office_delete.html'),
+         name='office-delete'),
 ]
 
 if settings.DEBUG:
 
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
