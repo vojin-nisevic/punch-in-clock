@@ -10,10 +10,16 @@
     <meta name="description" content="">
     <meta name="author" content="Gordoservon">
     <link rel="icon" href="{% static 'images/favicon.ico' %}">
-    <title>Punch in Clock</title>
+    <title>Punch in Clock {% block title %}{% endblock %}</title>
 
     <!-- Custom styles for this template -->
     <link href="{% static 'css/base.css' %}" rel="stylesheet">
+
+    {% block css %}
+    {% endblock %}
+
+    {% block js %}
+    {% endblock %}
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -57,7 +63,7 @@
     </nav>
 
 
-    {% block content %}}
+    {% block content %}
 
     {% endblock %}
 
