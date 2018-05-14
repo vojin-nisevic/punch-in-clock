@@ -1,19 +1,9 @@
 {% extends 'core/base.html' %}
 {% load static %}
-{% load i18n %} {# for translation #}
+{% load i18n %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Invite employee</title>
+{% block title %}- Employee invitation{% endblock %}
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-          crossorigin="anonymous">
-
-</head>
-<body class="bg-light">
 {% block content %}
 {% if form.errors %}
     <div class="alert alert-danger" role="alert">
@@ -23,32 +13,19 @@
         {% endfor %}
     </div>
 {% endif %}
-<div class="container">
-    <div class="col-md-8 py-5 text-center"></div>
-        <div class="row">
-
-                <form method="post">
-                    {% csrf_token %}
-                    <div class="form-group col-xs-4 col-md-8">
-                        {{ form.as_p }}
-                        <input type="submit" name="send_email" value="Send mail">
-                    </div>
-                </form>
-
+    <div class="container">
+        <div class="col-md-8 py-5 text-center"></div>
+            <div class="row">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group col-xs-4 col-md-8">
+                            {{ form.as_p }}
+                            <input type="submit" name="send_email" value="Send mail">
+                        </div>
+                    </form>
+            </div>
         </div>
+
     </div>
 
-</div>
-
 {% endblock %}
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <script src="//code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
-</html>
