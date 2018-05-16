@@ -29,6 +29,10 @@ from core.views.office import Offices
 from core.views.office_create import OfficeCreate
 from core.views.office_update import OfficeUpdate
 from core.views.office_delete import OfficeDelete
+from core.views.holiday import Holidays
+from core.views.holiday_create import HolidayCreate
+from core.views.holiday_update import HolidayUpdate
+from core.views.holiday_delete import HolidayDelete
 
 
 urlpatterns = [
@@ -52,6 +56,13 @@ urlpatterns = [
          name='office-update'),
     path('office/delete/<int:pk>/', OfficeDelete.as_view(template_name='core/office_delete.html'),
          name='office-delete'),
+    path('holiday/add/', HolidayCreate.as_view(template_name='core/holiday_create.html'),
+         name='holiday-add'),
+    path('holiday/', Holidays.as_view(template_name='core/holiday.html'), name='holiday'),
+    path('holiday/update/<int:pk>', HolidayUpdate.as_view(template_name='core/holiday_update.html'),
+         name='holiday-update'),
+    path('holiday/delete/<int:pk>', HolidayDelete.as_view(template_name='core/holiday_delete.html'),
+         name='holiday-delete'),
 ]
 
 if settings.DEBUG:
