@@ -1,0 +1,48 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}- Free Days{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="col-md-8 py-5 text-center"></div>
+            <div class="row">
+                <div class="col-md-10">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {% if messages %}
+                            <ul class="messages" style="list-style-type: none">
+                                {% for message in messages %}
+                                    <li class="m-2 pb-3 bg-info">
+                                        {{ message }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        {% if freedays_list %}
+                        <ul>
+                        {% for freeday in freedays_list %}
+                            <li>
+                                    <h5>{{ freeday.name }}
+                                        <span>{{ freeday.date|date:"d.m.Y" }}</span>
+                                    </h5>
+                                <a href="{% url 'freedays-update' freeday.id %}">Update</a>
+                                <a href="{% url 'freedays-delete' freeday.id %}">Delete</a>
+
+                            </li>
+                        {% endfor %}
+                        </ul>
+                        {% else %}
+
+                            <h3 class="h3-dep">No Free Days at the moment, please create some</h3>
+                        {% endif %}
+
+                        <a class="btn btn-primary btn-save-dep" role="button" href="{% url 'freedays-add' %}">Create holiday</a>
+                    </form>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
