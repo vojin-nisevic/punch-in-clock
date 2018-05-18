@@ -33,6 +33,7 @@ from core.views.holiday import Holidays
 from core.views.holiday_create import HolidayCreate
 from core.views.holiday_update import HolidayUpdate
 from core.views.holiday_delete import HolidayDelete
+from core.views.freedays import *
 
 
 urlpatterns = [
@@ -63,10 +64,16 @@ urlpatterns = [
          name='holiday-update'),
     path('holiday/delete/<int:pk>', HolidayDelete.as_view(template_name='core/holiday_delete.html'),
          name='holiday-delete'),
+    path('freedays/', FreeDaysList.as_view(template_name='core/freedays.html'), name='freedays'),
+    path('freedays/add/', FreeDaysCreate.as_view(template_name='core/freedays_create.html'),
+         name='freedays-add'),
+    path('freedays/update/<int:pk>', FreeDaysUpdate.as_view(template_name='core/freedays_update.html'),
+         name='freedays-update'),
+    path('freedays/delete/<int:pk>', FreeDaysDelete.as_view(template_name='core/freedays_delete.htmpl'),
+         name='freedays-delete'),
 ]
 
 if settings.DEBUG:
-    # urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS, name='static')
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
