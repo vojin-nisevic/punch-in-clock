@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}- Employee invitation{% endblock %}
+
+{% block content %}
+{% if form.errors %}
+    <div class="alert alert-danger" role="alert">
+        <strong>Fix the following errors</strong>
+        {% for key, value in form.errors.items %}
+            {{ key }}: {{ value.0 }}<br>
+        {% endfor %}
+    </div>
+{% endif %}
+    <div class="container">
+        <div class="col-md-8 py-5 text-center"></div>
+            <div class="row">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group col-xs-4 col-md-8">
+                            {{ form.as_p }}
+                            <input type="submit" name="send_email" value="Send mail">
+                        </div>
+                    </form>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

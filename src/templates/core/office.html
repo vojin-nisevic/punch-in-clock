@@ -1,0 +1,43 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}- Office{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="col-md-8 py-5 text-center"></div>
+        <div class="row">
+            <div class="col-md-10">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {% if messages %}
+                        <ul class="messages" style="list-style-type: none">
+                            {% for message in messages %}
+                                <li class="m-2 pb-3 bg-info">
+                                    {{ message }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {% if office_list %}
+                    <ul>
+                    {% for office in office_list %}
+                        <li>
+                            <h5>{{ office.name }}</h5>
+                            <a href="{% url 'office-update' office.id %}">Update</a>
+                            <a href="{% url 'office-delete' office.id %}">Delete</a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                    {% else %}
+
+                        <h3>No offices at the moment, please create some</h3>
+                    {% endif %}
+
+                    <a class="btn btn-primary" role="button" href="{% url 'office-add' %}">Create office</a>
+                </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

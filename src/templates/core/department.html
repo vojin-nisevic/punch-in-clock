@@ -1,0 +1,36 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}- Departments{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="col-md-8 py-5 text-center"></div>
+        <div class="row">
+            <div class="col-md-10">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {% if department_list %}
+                    <ul>
+                    {% for department in department_list %}
+                        <li>
+                            <h5 class="h3-dep">{{ department.name }}</h5>
+                            <a href="{% url 'department-UD' department.id %}">Update</a>
+                            <a href="{% url 'department-delete' department.id %}">Delete</a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                    {% else %}
+
+                        <h3 class="h3-dep">No departments at the moment, please create some</h3>
+                    {% endif %}
+
+                    <a class="btn btn-primary btn-save-dep" role="button" href="{% url 'department-add' %}">Create department</a>
+                </form>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

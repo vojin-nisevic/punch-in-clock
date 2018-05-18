@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}- Office{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="col-md-8 py-5 text-center"></div>
+            <div class="row">
+                <div class="col-md-10">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <h5>{{ office.name }}</h5>
+                        <h5>{{ office.building }}</h5>
+
+                        <input type="submit" class="btn btn-primary" value="Delete office"
+                               onclick="return confirm('Are you sure?')">
+                    </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

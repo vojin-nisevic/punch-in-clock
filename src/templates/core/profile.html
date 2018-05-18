@@ -1,44 +1,27 @@
 {% extends 'core/base.html' %}
 {% load static %}
-{% load i18n %} {# for translation #}
+{% load i18n %}
 
+{% block title %}- User profile{% endblock %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My profile</title>
-
-    <title>Signin Template for Bootstrap</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-          crossorigin="anonymous">
-
-</head>
-<body>
 {% block content %}
-    <form>
-        <div class="container">
-            <div class="col-sm-4"></div>
+    <div class="container">
+        <div class="col-md-8 py-5 text-center"></div>
             <div class="row">
-                <label for="email">Email address</label>
-                <input type="email" id="email" class="form-control py-2" value="{{ email }}">
-            </div>
-            <div class="row">
-                <label for="first_name">First name</label>
-                <input type="email" id="first_name" class="form-control" value="{{ user.email }}"
-                       placeholder="Your first name">
+                <div class="col-md-8">
+                    <form enctype="multipart/form-data" action="" method="post">
+                        {% csrf_token %}
+
+                            {{ form.as_p }}
+                            <input type="submit" value="Update profile">
+
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <img src="{{ user.profile_image.url }}" width="230" alt="User profile image">
+                </div>
             </div>
         </div>
-    </form>
+    </div>
 {% endblock %}
-    <!-- Necessary for Boottrap -->
-    <script src="//code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-</body>
-</html>
