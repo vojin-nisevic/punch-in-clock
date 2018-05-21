@@ -34,6 +34,7 @@ from core.views.holiday_create import HolidayCreate
 from core.views.holiday_update import HolidayUpdate
 from core.views.holiday_delete import HolidayDelete
 from core.views.freedays import *
+from core.views.user import UserRegister
 
 
 urlpatterns = [
@@ -71,6 +72,7 @@ urlpatterns = [
          name='freedays-update'),
     path('freedays/delete/<int:pk>', FreeDaysDelete.as_view(template_name='core/freedays_delete.htmpl'),
          name='freedays-delete'),
+    path('user/register/', UserRegister.as_view(), name='user-register'),
 ]
 
 if settings.DEBUG:

@@ -18,7 +18,9 @@
                     </form>
                 </div>
                 <div class="col-md-4">
-                    <img src="{{ user.profile_image.url }}" width="230" alt="User profile image">
+                    {% if user.profile_image %}
+                        <img src="{{ user.profile_image.url }}" width="230" alt="User profile image">
+                    {% endif %}
                 </div>
             </div>
         </div>
