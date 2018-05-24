@@ -21,18 +21,9 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns, static
 from django.views.generic import TemplateView
 from core.views.invite import Invite
 from core.views.profile import Profile
-from core.views.department import Departments
-from core.views.department_create import DepartmentCreate
-from core.views.department_UD import DepartmentUpdate
-from core.views.department_delete import DepartmentDelete
-from core.views.office import Offices
-from core.views.office_create import OfficeCreate
-from core.views.office_update import OfficeUpdate
-from core.views.office_delete import OfficeDelete
-from core.views.holiday import Holidays
-from core.views.holiday_create import HolidayCreate
-from core.views.holiday_update import HolidayUpdate
-from core.views.holiday_delete import HolidayDelete
+from core.views.department import *
+from core.views.office import *
+from core.views.holiday import *
 from core.views.freedays import *
 from core.views.user import UserRegister
 
@@ -45,14 +36,14 @@ urlpatterns = [
     path('profile/<intLpk>/', Profile.as_view(template_name='core/profile.html'), name='profile'),
     path('base/', TemplateView.as_view(template_name='core/base.html'), name='base'),
     path('invite/', Invite.as_view(template_name='core/invite.html'), name='invite'),
-    path('department/', Departments.as_view(template_name='core/department.html'), name='department'),
+    path('department/', Departmentslist.as_view(template_name='core/department.html'), name='department'),
     path('department/add/', DepartmentCreate.as_view(template_name='core/department_create.html'),
          name='department-add'),
     path('department/update/<int:pk>', DepartmentUpdate.as_view(template_name='core/department_UD.html'),
          name='department-UD'),
     path('department/delete/<int:pk>/', DepartmentDelete.as_view(template_name='core/department_delete.html'),
          name='department-delete'),
-    path('office/', Offices.as_view(template_name='core/office.html'), name='office'),
+    path('office/', OfficesList.as_view(template_name='core/office.html'), name='office'),
     path('office/add/', OfficeCreate.as_view(template_name='core/office_create.html'), name='office-add'),
     path('office/update/<int:pk>/', OfficeUpdate.as_view(template_name='core/office_update.html'),
          name='office-update'),
@@ -60,7 +51,7 @@ urlpatterns = [
          name='office-delete'),
     path('holiday/add/', HolidayCreate.as_view(template_name='core/holiday_create.html'),
          name='holiday-add'),
-    path('holiday/', Holidays.as_view(template_name='core/holiday.html'), name='holiday'),
+    path('holiday/', HolidaysList.as_view(template_name='core/holiday.html'), name='holiday'),
     path('holiday/update/<int:pk>', HolidayUpdate.as_view(template_name='core/holiday_update.html'),
          name='holiday-update'),
     path('holiday/delete/<int:pk>', HolidayDelete.as_view(template_name='core/holiday_delete.html'),
