@@ -1,15 +1,19 @@
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.contrib.messages.views import SuccessMessageMixin
+from django.urls import reverse_lazy, reverse
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import FormView
+from django.http import  HttpResponseRedirect
+from django.contrib import messages
 from core.forms.user import UserRegisterForm
 
 
-class UserRegister(FormView):
+class UserRegister(SuccessMessageMixin, FormView):
 
     form_class = UserRegisterForm
     template_name = 'core/user_register.html'
-    success_url = reverse_lazy('core')
+    success_url = reverse_lazy('home')
+    success_message = _('Employee account was successfully created')
 
     def get(self, request, *args, **kwargs):
         form = self.form_class(None)
@@ -31,4 +35,5 @@ class UserRegister(FormView):
             user.birth_date = form.cleaned_data['birth_date']
             user.gender = form.cleaned_data['gender']
             user.save()
-            return render(request, 'core/home.html')
+            messages.add_message(request, messages.INFO, self.success_message)
+            return HttpResponseRedirect(reverse('home'))
