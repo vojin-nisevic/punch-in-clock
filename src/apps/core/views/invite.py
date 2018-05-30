@@ -3,9 +3,10 @@ from django.conf import settings
 from django.shortcuts import redirect
 from django.core import mail
 from core.forms.invite import InviteForm
+from core.views.security import *
 
 
-class Invite(FormView):
+class Invite(UserManagerTest, FormView):
     form_class = InviteForm
     template_name = 'invite.html'
 

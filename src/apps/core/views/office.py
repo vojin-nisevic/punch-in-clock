@@ -5,16 +5,17 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from core.models.user import Office
 from core.forms.office import OfficeForm
+from core.views.security import *
 
 
-class OfficesList(ListView):
+class OfficesList(UserManagerTest, ListView):
     model = Office
     template_name = 'office.html'
     Office.context_object_name = 'office_list'
     ordering = ['name']
 
 
-class OfficeCreate(SuccessMessageMixin, CreateView):
+class OfficeCreate(UserManagerTest, SuccessMessageMixin, CreateView):
     model = Office
     fields = ['name', 'building']
     success_message = _("%(name)s office was created successfully")
@@ -22,7 +23,7 @@ class OfficeCreate(SuccessMessageMixin, CreateView):
 
 
 
-class OfficeDelete(SuccessMessageMixin, DeleteView):
+class OfficeDelete(UserManagerTest, SuccessMessageMixin, DeleteView):
     model = Office
     template_name = 'office_delete.html'
     success_url = reverse_lazy('office')
@@ -34,7 +35,7 @@ class OfficeDelete(SuccessMessageMixin, DeleteView):
         return super(OfficeDelete, self).delete(request, *args, **kwargs)
 
 
-class OfficeUpdate(SuccessMessageMixin, UpdateView):
+class OfficeUpdate(UserManagerTest, SuccessMessageMixin, UpdateView):
     model = Office
     template_name = 'office_update.html'
     form_class = OfficeForm

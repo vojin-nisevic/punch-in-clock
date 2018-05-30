@@ -6,9 +6,10 @@ from django.views.generic import FormView
 from django.http import  HttpResponseRedirect
 from django.contrib import messages
 from core.forms.user import UserRegisterForm
+from core.views.security import *
 
 
-class UserRegister(SuccessMessageMixin, FormView):
+class UserRegister(UserManagerTest, SuccessMessageMixin, FormView):
 
     form_class = UserRegisterForm
     template_name = 'core/user_register.html'

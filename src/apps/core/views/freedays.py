@@ -4,21 +4,22 @@ from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from core.models.free_days import FreeDays
 from core.forms.free_days import FreeDaysForm
+from core.views.security import *
 
 
-class FreeDaysList(ListView):
+class FreeDaysList(UserManagerTest, ListView):
     model = FreeDays
     FreeDays.context_object_name = 'freedays_list'
 
 
-class FreeDaysCreate(SuccessMessageMixin, CreateView):
+class FreeDaysCreate(UserManagerTest, SuccessMessageMixin, CreateView):
     model = FreeDays
     form_class = FreeDaysForm
     success_url = reverse_lazy('freedays')
     success_message = '%(name)s was created successfully'
 
 
-class FreeDaysDelete(SuccessMessageMixin, DeleteView):
+class FreeDaysDelete(UserManagerTest, SuccessMessageMixin, DeleteView):
     model = FreeDays
     success_url = reverse_lazy('freedays')
     success_message = '%(name)s was deleted successfully'
@@ -29,7 +30,7 @@ class FreeDaysDelete(SuccessMessageMixin, DeleteView):
         return super(FreeDaysDelete, self).delete(request, *args, **kwargs)
 
 
-class FreeDaysUpdate(SuccessMessageMixin, UpdateView):
+class FreeDaysUpdate(UserManagerTest, SuccessMessageMixin, UpdateView):
     model = FreeDays
     success_url = reverse_lazy('freedays')
     success_message = '%(name)s was updated successfully'
