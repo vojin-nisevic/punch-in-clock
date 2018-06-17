@@ -81,8 +81,8 @@ class User(AbstractUser):
         help_text=_('Designates whether the user is manager or not.'),
     )
 
-    department = models.ForeignKey('self', on_delete=models.CASCADE, related_name='department_set', null=True)
-    office = models.ForeignKey('self', on_delete=models.CASCADE, related_name='office_set', null=True)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='department_set', null=True)
+    office = models.ForeignKey(Office, on_delete=models.CASCADE, related_name='office_set', null=True)
     position = models.CharField(_('position'), max_length=30, blank=True)
     birth_date = models.DateField(_('birth date'), blank=True, default='1990-01-01')
     gender = models.CharField(_('gender'), max_length=1, choices=choices.MALE_OR_FEMALE)

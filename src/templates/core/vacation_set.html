@@ -1,0 +1,25 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}- {% trans 'Set vacation days' %}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="col-md-8 py-5 text-left"></div>
+            <div class="row">
+                <div class="col-md-10 text-left">
+                    <form action="" method="post">
+                        {% csrf_token %}
+
+                        {% include 'core/form-template.html' %}
+
+                        <input type="submit" class="btn btn-primary align-left" value="{% trans "Update" %}"
+                               onclick="return confirm({% trans 'Are you sure?' %})">
+                    </form>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

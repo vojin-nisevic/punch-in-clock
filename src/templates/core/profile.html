@@ -12,7 +12,7 @@
                     <form enctype="multipart/form-data" action="" method="post">
                         {% csrf_token %}
 
-                            {{ form.as_p }}
+                            {% include 'core/form-template.html' %}
                             <input type="submit" value="Update profile">
 
                     </form>

@@ -25,7 +25,8 @@ from core.views.department import *
 from core.views.office import *
 from core.views.holiday import *
 from core.views.freedays import *
-from core.views.user import UserRegister
+from core.views.user import *
+from core.views.vacations import *
 
 
 urlpatterns = [
@@ -64,6 +65,9 @@ urlpatterns = [
     path('freedays/delete/<int:pk>', FreeDaysDelete.as_view(template_name='core/freedays_delete.htmpl'),
          name='freedays-delete'),
     path('user/register/', UserRegister.as_view(), name='user-register'),
+    path('users/list/', UsersList.as_view(), name='users-list'),
+    path('users/update/<int:pk>', UserUpdate.as_view(), name='user-update'),
+    path('vacation/set/<int:pk>', VacationEmployeeCreate.as_view(), name='vacation-set'),
 ]
 
 if settings.DEBUG:

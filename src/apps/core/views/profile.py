@@ -10,7 +10,7 @@ from core.forms.profile import UserForm
 class Profile(UpdateView):
     model = User
     form_class = UserForm
-    template_name = 'profile.html'
+    template_name = 'core/profile.html'
 
     def get_success_url(self):
         return reverse_lazy('profile', args=(self.pk_url_kwarg,))

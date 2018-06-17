@@ -15,7 +15,7 @@
                     <ul>
                     {% for department in department_list %}
                         <li>
-                            <h5 class="h3-dep">{{ department.name }}</h5>
+                            <h5>{{ department.name }}</h5>
                             <a href="{% url 'department-UD' department.id %}">Update</a>
                             <a href="{% url 'department-delete' department.id %}">Delete</a>
                         </li>
@@ -23,7 +23,7 @@
                     </ul>
                     {% else %}
 
-                        <h3 class="h3-dep">No departments at the moment, please create some</h3>
+                        <h3>No departments at the moment, please create some</h3>
                     {% endif %}
 
                     <a class="btn btn-primary btn-save-dep" role="button" href="{% url 'department-add' %}">Create department</a>

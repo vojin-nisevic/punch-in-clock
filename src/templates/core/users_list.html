@@ -1,0 +1,57 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}- {% trans "Users list" %}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="col-md-8 py-5 text-center"></div>
+            <div class="row">
+                <div class="col-md-10">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {% if messages %}
+                            <ul class="messages" style="list-style-type: none">
+                                {% for message in messages %}
+                                    <li class="m-2 pb-3 bg-info">
+                                        {{ message }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        {% if users_list %}
+                        <ul style="list-style-type: none">
+                        {% for user in users_list %}
+
+                                <li>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h5>{{ user.first_name }} {{ user.last_name }}</h5>
+                                    </div>
+                                    <div class="col-md-9">
+                                            <span class="ml-5"><em>{{ user.email }}
+                                            </em> </span>
+                                    </div>
+
+                                </div>
+                                <a href="{% url 'user-update' user.id %}">{% trans "Update" %}</a>
+                                    <a href="#">{% trans "Delete" %}</a>
+                                <a href="{% url 'vacation-set' user.id %}">{% trans 'Set vacation' %}</a>
+                                </li>
+
+                        {% endfor %}
+                        </ul>
+                        {% else %}
+
+                            <h3>{% trans "No employees at the moment, please register or invite some" %}</h3>
+                        {% endif %}
+
+                        <a class="btn btn-primary" role="button" href="#">{% trans "Register employee" %}</a>
+                    </form>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

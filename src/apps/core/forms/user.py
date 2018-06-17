@@ -1,7 +1,7 @@
-from django.forms import ModelForm, DateField
+from django.forms import ModelForm, DateField, ModelChoiceField
 from django import forms
 from django.conf import settings
-from core.models.user import User
+from core.models.user import User, Department
 
 
 class UserRegisterForm(ModelForm):
@@ -14,3 +14,13 @@ class UserRegisterForm(ModelForm):
     class Meta:
         model = User
         fields = ('email', 'password1', 'password2', 'first_name', 'last_name', 'birth_date', 'gender')
+
+
+
+class UserUpdateForm(ModelForm):
+    department = ModelChoiceField(queryset=Department.objects.all().order_by('name'))
+
+    class Meta:
+        model = User
+        fields = ('id', 'is_manager', 'department', 'position', 'address', 'city', 'zip', 'state_province', 'country', 'gender',
+                  'first_name', 'last_name', 'home_phone', 'cell_phone', 'desk_phone')
