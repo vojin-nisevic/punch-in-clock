@@ -2,6 +2,7 @@
 {% load static %}
 {% load i18n %}
 
+{% block title %}- {% trans "Punch out" %}{% endblock %}
 
     {% block content %}
       <div class="container">
@@ -18,13 +19,9 @@
               <form action="" method="post">
                   {% csrf_token %}
                   {% include 'core/form-template.html' %}
-                  <button type="submit" id="btn"  class="btn-primary btn">{% trans "Punch in" %}</button>
+                  <button type="submit" class="btn-primary btn">{% trans "Punch out" %}</button>
               </form>
-              <script>
-                  $('button').click(function () {
-                      $(this).attr('disabled', true)
-                  })
-              </script>
+
           </div>
       </div>
 

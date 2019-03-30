@@ -27,13 +27,14 @@ from core.views.holiday import *
 from core.views.freedays import *
 from core.views.user import *
 from core.views.vacations import *
+from core.views.checkin import *
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', login, name='login'),
     path('logout/', logout, name='logout'),
-    path('core/', TemplateView.as_view(template_name='core/home.html'), name='home'),
+    path('core/', CheckInCreate.as_view(template_name='core/home.html'), name='home'),
     path('profile/<intLpk>/', Profile.as_view(template_name='core/profile.html'), name='profile'),
     path('base/', TemplateView.as_view(template_name='core/base.html'), name='base'),
     path('invite/', Invite.as_view(template_name='core/invite.html'), name='invite'),
@@ -68,6 +69,7 @@ urlpatterns = [
     path('users/list/', UsersList.as_view(), name='users-list'),
     path('users/update/<int:pk>', UserUpdate.as_view(), name='user-update'),
     path('vacation/set/<int:pk>', VacationEmployeeCreate.as_view(), name='vacation-set'),
+    path('checkout/', CheckOut.as_view(), name='punchout'),
 ]
 
 if settings.DEBUG:

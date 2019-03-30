@@ -20,6 +20,16 @@
 
   <body class="text-center">
     {% block content %}
+        {% if messages %}
+                    <ul class="messages" style="list-style-type: none">
+                        {% for message in messages %}
+                            <li class="m-2 pb-3 bg-info">
+                                {{ message }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+        {% endif %}
+
         <form class="form-signin" method="post" action="?next={% url 'home' %}" >
           {% csrf_token %}
           <img class="mb-4" src="{% static 'images/punchin.jpg' %}" alt="Punch in" width="72" height="72">
